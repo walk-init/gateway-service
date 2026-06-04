@@ -4,7 +4,6 @@ import { ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
-  @Post('send-otp')
   @ApiOperation({
     summary: 'Send OTP',
     description: 'Send OTP to the user',
@@ -14,6 +13,7 @@ export class AuthController {
     type: String,
   })
   @HttpCode(HttpStatus.OK)
+  @Post('otp/send')
   public async sendOtp(
     @Body() sendOtpRequest: SendOtpRequest,
   ) {
