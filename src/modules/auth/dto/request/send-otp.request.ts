@@ -4,7 +4,8 @@ import { IdentifierValidator } from '@shared/validators';
 
 export class SendOtpRequest {
   @ApiProperty({
-    description: 'The identifier to send the OTP to'
+    description: 'The identifier to send the OTP to',
+    example: 'test@example.com',
   })
   @IsString()
   @Validate(IdentifierValidator)
@@ -12,6 +13,8 @@ export class SendOtpRequest {
 
   @ApiProperty({
     description: 'The type of the identifier',
+    example: 'email',
+    enum: ['email', 'phone'],
   })
   @IsEnum(['email', 'phone'])
   public type: 'email' | 'phone';
