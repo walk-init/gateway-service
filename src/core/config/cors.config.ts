@@ -3,7 +3,7 @@ import { CorsOptions } from "@nestjs/common/interfaces/external/cors-options.int
 
 export function GatewayCorsConfig(config: ConfigService): CorsOptions {
   return {
-    origin: config.getOrThrow<string>('HTTP_CORS_ORIGIN').split(','),
+    origin: config.getOrThrow<string>("HTTP_CORS_ORIGIN").split(","),
     credentials: true,
   };
 }
