@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './core/app.module'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { GatewayCorsConfig, GatewayValidationsConfig, GatewaySwaggerDocumentConfig, GatewaySwaggerSetupOptions, GatewaySwaggerPathConfig } from './core/config';
+import { SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,17 +12,20 @@ async function bootstrap() {
 
   const logger = new Logger()
 
-  app.enableCors({
-    origin: config.getOrThrow<string>('HTTP_CORS_ORIGIN').split(','),
-    credentials: true,
-  });
+  app.useGlobalPipes(new ValidationPipe(GatewayValidationsConfig()));
 
-  const swaggerConfig = new DocumentBuilder().setTitle('Gateway Service').setDescription('Gateway Service API').setVersion('1.0').addBearerAuth().build();
-  const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('docs', app, swaggerDocument, {
-    yamlDocumentUrl: '/openapi.yaml',
-    jsonDocumentUrl: '/openapi.json',
-  });
+  app.enableCors(GatewayCorsConfig(config));
+
+  const swaggerDocument = SwaggerModule.createDocument(
+    app,
+    GatewaySwaggerDocumentConfig(),
+  );
+  SwaggerModule.setup(
+    GatewaySwaggerPathConfig(config),
+    app,
+    swaggerDocument,
+    GatewaySwaggerSetupOptions(),
+  );
 
   const port = config.getOrThrow<number>('HTTP_PORT');
   const host = config.getOrThrow<string>('HTTP_HOST');
