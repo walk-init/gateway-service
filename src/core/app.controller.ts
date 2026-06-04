@@ -1,12 +1,10 @@
 import { Controller, Get } from "@nestjs/common";
-import { AppService } from "./app.service";
 
 import { ApiOkResponse, ApiOperation } from "@nestjs/swagger";
 import { HealthResponse } from "./dto/response";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
   @ApiOperation({
     summary: "Welcome to the Gateway Service",
@@ -14,7 +12,7 @@ export class AppController {
   })
   @Get()
   public getHello() {
-    return this.appService.getHello();
+    return "Hello World";
   }
 
   @ApiOperation({
@@ -27,6 +25,8 @@ export class AppController {
   })
   @Get("health")
   public getHealth() {
-    return this.appService.getHealth();
+    return {
+      status: "healthy",
+    };
   }
 }
