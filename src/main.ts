@@ -1,7 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './core/app.module'
-import { Logger, ValidationPipe } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { AppModule } from '@core/app.module'
+import { Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config'; 
+import { ValidationPipe } from '@nestjs/common';
 import { GatewayCorsConfig, GatewayValidationsConfig, GatewaySwaggerDocumentConfig, GatewaySwaggerSetupOptions, GatewaySwaggerPathConfig } from './core/config';
 import { SwaggerModule } from '@nestjs/swagger';
 
