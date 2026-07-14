@@ -38,7 +38,7 @@ async function bootstrap() {
   const host = config.getOrThrow<string>("HTTP_HOST");
   await app.listen(port);
 
-  logger.log(`Gateway service is running on ${host}`);
-  logger.log(`Swagger docs is available at ${host}/docs`);
+  logger.log(`Gateway service is running on ${host}:${port}`);
+  logger.log(`Swagger docs is available at ${host}:${port}${GatewaySwaggerPathConfig(config)}`);
 }
 bootstrap();

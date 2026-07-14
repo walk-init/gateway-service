@@ -15,7 +15,7 @@ import { AuthClientGrpc } from "./auth.grpc";
           options: {
             package: 'auth.v1',
             protoPath: 'node_modules/@walkcat/contracts/proto/auth.proto',
-            url: config.getOrThrow('AUTH_GRPC_URL'),
+            url: config.getOrThrow<string>('AUTH_GRPC_URL'),
           },
         }),
         inject: [ConfigService],

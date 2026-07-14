@@ -1,8 +1,9 @@
-import { Inject, OnModuleInit } from "@nestjs/common";
+import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { AuthServiceClient, SendOTPRequest, SendOTPResponse } from "@walkcat/contracts/gen/auth";
 import type { ClientGrpc } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
+@Injectable()
 export class AuthClientGrpc implements OnModuleInit {
   private authService: AuthServiceClient;
 
