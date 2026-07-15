@@ -2352,13 +2352,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walkcat/contracts@file:../contracts::locator=gateway-service%40workspace%3A.":
-  version: 0.0.1
-  resolution: "@walkcat/contracts@file:../contracts#../contracts::hash=673aef&locator=gateway-service%40workspace%3A."
+"@walkcat/contracts@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@walkcat/contracts@npm:0.0.3"
   dependencies:
     "@nestjs/microservices": "npm:^11.1.24"
     rxjs: "npm:^7.8.2"
-  checksum: 10c0/c132bf25a7c95c1f18c70f1f1635fc23fd07ceed63975294593eb4a917bba90d18f97ea18c75375796ddb919345ef8ce30e448fd8d33873e096456c08d11c72e
+  checksum: 10c0/67dc9490478a8a8b53a1233c4702cd49789bc703c594e8b42956a18086eb48cdb8526e522d0e5838d0294a673d4ed1ebced09c0ed5829282c7d203b6dece01a2
   languageName: node
   linkType: hard
 
@@ -4237,7 +4237,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^22.10.7"
     "@types/supertest": "npm:^6.0.2"
-    "@walkcat/contracts": "file:../contracts"
+    "@walkcat/contracts": "npm:^0.0.3"
     "@walkcat/core": "npm:^1.0.3"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.15.1"
